@@ -1,0 +1,54 @@
+<div class="container" style="margin-top: 40px;">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <form>
+        <div class="form-group">
+          <label for="word">Word Name</label>
+          <input type="text" class="form-control"  id="word"  required [(ngModel)]="wordForm.word"
+            name="word" />
+        </div>
+        <div>
+          <button
+          class="btn btn-primary"
+          type="submit" (click)="onSubmit(wordForm)">
+          Submit
+        </button>
+        <button class="btn btn-primary" style="margin-left:10px;"  type="submit" (click)="clearFields()">
+          Reset
+        </button>
+        
+        </div>
+       
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="row" >
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <table class="table" *ngIf="isShow">
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Word</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let word of wordArray; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{word.word}}</td>
+            <td>
+              <button type="submit" id="{{'editButton' +  i }}" class="btn btn-info btn-xs" (click)="getWord(word.id)">
+               Edit 
+              </button> 
+              &nbsp;&nbsp;
+              <button type="submit" id="{{'deleteButton' + i}}" class="btn btn-danger btn-xs" (click)="deleteWord(word.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
